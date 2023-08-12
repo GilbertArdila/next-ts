@@ -10,7 +10,7 @@ export const RandomFox = ({image,alt}: Props):JSX.Element => {
 
   return (
     <img 
-    className='w-1/2 h-1/2 rounded-lg shadow-lg'
+    className='w-full h-80 rounded-lg shadow-lg'
     src={image} alt={alt} />
   )
 }
