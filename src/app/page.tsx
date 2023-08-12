@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import type { MouseEventHandler } from "react";
 
 import { RandomFox } from "@/components/RandomFox";
+import { Button } from "./Button";
 
 //function to generate a random number
 const random = (): number => Math.floor(Math.random() * 123) + 1;
@@ -47,18 +48,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-3xl font-bold underline m-6">Fox images</h1>
-      <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      onClick={() => {
-        setNewImages(true);
-      }
-      }
-      >Get new images</button>
-      
-      <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-6"
-      onClick={addImage}
-      >Add new image</button>
+     <Button onClick={() => setNewImages(true)} text="Get new images" />
+
+      <Button onClick={addImage} text="Add new image" />
 
       {images.map((image) => (
         <div className="flex p-4 justify-between" key={image.id}>
