@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type { MouseEventHandler } from "react";
 
 import { RandomFox } from "@/components/RandomFox";
-import { Button } from "./Button";
+import { Button } from "../components/Button";
 
 //function to generate a random number
 const random = (): number => Math.floor(Math.random() * 123) + 1;
@@ -12,19 +12,18 @@ const random = (): number => Math.floor(Math.random() * 123) + 1;
 const uuid = (): string =>
   Math.random().toString(36).substring(2) + Date.now().toString(36);
 
-//create an Interface for the props
-type ImageType = Array<{ url: string; id: string }>;
+
 
 export default function Home() {
   
   //state to put many images
-  const [images, setImages] = useState<ImageType>([]);
+  const [images, setImages] = useState<TImageType>([]);
   //state to get new images
   const [newImages, setNewImages] = useState<boolean>(false);
 
   //useEffect to put many images on setImages
   useEffect(() => {
-    const images: ImageType = [];
+    const images: TImageType = [];
     for (let i = 0; i < 4; i++) {
       const id = uuid();
       const url = `https://randomfox.ca/images/${random()}.jpg`;
@@ -37,7 +36,7 @@ export default function Home() {
   //add new image to the array
   const addImage: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
-   const newImage: ImageType = [];
+   const newImage: TImageType = [];
     const id = uuid();
     const url = `https://randomfox.ca/images/${random()}.jpg`;
     newImage.push({ id, url });
