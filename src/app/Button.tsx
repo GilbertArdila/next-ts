@@ -1,17 +1,19 @@
 import React, { MouseEventHandler } from 'react'
+import type {HTMLAttributes} from 'react'
 
 
-interface Props {
-    onClick: (() => void) | MouseEventHandler<HTMLButtonElement>;
+interface TextProps {
     text: string;
-
 }
 
-export const Button = ({onClick,text}:Props):JSX.Element => {
+interface Props2 extends HTMLAttributes<HTMLButtonElement>,TextProps{
+}
+
+export const Button = ({text,...buttonProps}:Props2):JSX.Element => {
   return (
     <button
     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-6"
-    onClick={onClick}
+    {...buttonProps}
     >{text}</button>
     
   )
